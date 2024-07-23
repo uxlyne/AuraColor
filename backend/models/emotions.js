@@ -15,3 +15,4 @@ const emotionSchema = new mongoose.Schema({
 const Emotion = mongoose.model('Emotion', emotionSchema);
 
 module.exports = Emotion;
+

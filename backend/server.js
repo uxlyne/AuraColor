@@ -1,14 +1,17 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-const Emotion = require('./models/emotion');
+const Emotion = require('./models/emotion'); 
 
 const app = express();
 app.use(bodyParser.json());
 
-mongoose.connect('mongodb://localhost/auracolor', { useNewUrlParser: true, useUnifiedTopology: true });
+const mongoURI = 'mongodb://localhost:27017/auracolor';
 
-// Create a new emotion
+mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => console.log('MongoDB connected successfully'))
+  .catch(err => console.error('MongoDB connection error:', err));
+
 app.post('/emotions', async (req, res) => {
   const emotion = new Emotion(req.body);
   try {
@@ -19,19 +22,16 @@ app.post('/emotions', async (req, res) => {
   }
 });
 
-// Fetch all emotions
 app.get('/emotions', async (req, res) => {
   const emotions = await Emotion.find();
   res.send(emotions);
 });
 
-// Fetch an emotion by name
 app.get('/emotions/:name', async (req, res) => {
   const emotion = await Emotion.findOne({ name: req.params.name });
   res.send(emotion);
 });
 
-// Update an emotion
 app.put('/emotions/:name', async (req, res) => {
   try {
     const emotion = await Emotion.findOneAndUpdate({ name: req.params.name }, req.body, { new: true });
@@ -41,7 +41,6 @@ app.put('/emotions/:name', async (req, res) => {
   }
 });
 
-// Delete an emotion
 app.delete('/emotions/:name', async (req, res) => {
   try {
     await Emotion.findOneAndDelete({ name: req.params.name });
@@ -51,6 +50,8 @@ app.delete('/emotions/:name', async (req, res) => {
   }
 });
 
-app.listen(3000, () => {
-  console.log('Server started on port 3000');
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Server started on port ${PORT}`);
 });
+
