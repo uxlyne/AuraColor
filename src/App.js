@@ -12,8 +12,65 @@ const App = () => {
   const [theme, setTheme] = useState('light');
   const [words, setWords] = useState([]);
 
+  const [layers, setLayers] = useState({
+    layer1: {
+      fillColor: 'rgba(255, 0, 150, 0.2)',
+      rimBorderColor: 'rgba(255, 0, 150, 0.5)',
+      borderType: 'solid',
+      vibrancy: 8,
+      texture: 'smooth',
+    },
+    layer2: {
+      fillColor: 'rgba(0, 150, 255, 0.2)',
+      rimBorderColor: 'rgba(0, 150, 255, 0.5)',
+      borderType: 'solid',
+      vibrancy: 6,
+      texture: 'rough',
+    },
+    layer3: {
+      fillColor: 'rgba(150, 255, 0, 0.2)',
+      rimBorderColor: 'rgba(150, 255, 0, 0.5)',
+      borderType: 'diffusing',
+      vibrancy: 5,
+      texture: 'smooth',
+    },
+    layer4: {
+      fillColor: 'rgba(255, 0, 150, 0.2)',
+      rimBorderColor: 'rgba(255, 0, 150, 0.5)',
+      borderType: 'diffusing',
+      vibrancy: 7,
+      texture: 'rough',
+    },
+  });
+
+  const emotions = {
+    Happy: {
+      fillColor: 'rgba(255, 255, 0, 0.2)',
+      rimBorderColor: 'rgba(255, 255, 0, 0.5)',
+      borderType: 'solid',
+      vibrancy: 9,
+      texture: 'smooth',
+      layerNumber: 2,
+    },
+    Loving: {
+      fillColor: 'rgba(255, 105, 180, 0.2)',
+      rimBorderColor: 'rgba(255, 105, 180, 0.5)',
+      borderType: 'solid',
+      vibrancy: 8,
+      texture: 'smooth',
+      layerNumber: 4,
+    },
+    // Add more emotions as needed
+  };
+
   const handleTextSubmit = (text) => {
-    setWords([...words, text]);
+    const emotion = emotions[text];
+    if (emotion) {
+      updateLayer(emotion);
+      setWords([...words, text]);
+    } else {
+      console.error('Emotion not found');
+    }
   };
 
   const handleRemoveWord = (word) => {
@@ -22,6 +79,14 @@ const App = () => {
 
   const toggleTheme = () => {
     setTheme((prevTheme) => (prevTheme === 'light' ? 'dark' : 'light'));
+  };
+
+  const updateLayer = (emotion) => {
+    const layer = `layer${emotion.layerNumber}`;
+    setLayers(prevLayers => ({
+      ...prevLayers,
+      [layer]: { ...prevLayers[layer], ...emotion },
+    }));
   };
 
   return (
@@ -34,7 +99,7 @@ const App = () => {
           <TextField onTextSubmit={handleTextSubmit} />
           <ButtonList words={words} onRemove={handleRemoveWord} />
         </div>
-        <Aura />
+        <Aura layers={layers} />
       </div>
       <Footer />
     </div>
@@ -42,6 +107,8 @@ const App = () => {
 };
 
 export default App;
+
+
 
 
 

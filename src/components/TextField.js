@@ -1,64 +1,29 @@
-import React, { useState, useEffect } from 'react';
-import './TextField.css';
-
-const emotions = ['Happy', 'Sad', 'Angry', 'Surprised', 'Confused', 'Calm'];
+import React, { useState } from 'react';
 
 const TextField = ({ onTextSubmit }) => {
-  const [text, setText] = useState('');
-  const [suggestions, setSuggestions] = useState([]);
-
-  useEffect(() => {
-    if (text) {
-      const filteredEmotions = emotions.filter(emotion =>
-        emotion.toLowerCase().startsWith(text.toLowerCase())
-      );
-      setSuggestions(filteredEmotions);
-    } else {
-      setSuggestions([]);
-    }
-  }, [text]);
+  const [inputValue, setInputValue] = useState('');
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (text.trim()) {
-      onTextSubmit(text);
-      setText('');
-      setSuggestions([]);
-    }
-  };
-
-  const handleSuggestionClick = (suggestion) => {
-    onTextSubmit(suggestion);
-    setText('');
-    setSuggestions([]);
+    onTextSubmit(inputValue);
+    setInputValue('');
   };
 
   return (
-    <div className="text-field-container">
-      <form onSubmit={handleSubmit} className="text-field-form">
-        <input
-          type="text"
-          value={text}
-          onChange={(e) => setText(e.target.value)}
-          placeholder="Type here..."
-          className="text-field-input"
-        />
-        <button type="submit" className="text-field-submit">Enter</button>
-      </form>
-      {suggestions.length > 0 && (
-        <ul className="suggestions-list">
-          {suggestions.map((suggestion, index) => (
-            <li key={index} onClick={() => handleSuggestionClick(suggestion)}>
-              {suggestion}
-            </li>
-          ))}
-        </ul>
-      )}
-    </div>
+    <form onSubmit={handleSubmit}>
+      <input
+        type="text"
+        placeholder="Type here..."
+        value={inputValue}
+        onChange={(e) => setInputValue(e.target.value)}
+      />
+      <button type="submit">Enter</button>
+    </form>
   );
 };
 
 export default TextField;
+
 
 
 

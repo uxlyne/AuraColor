@@ -1,79 +1,95 @@
 .aura-container {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    position: relative;
-    overflow: hidden; /* Prevent scrolling */
-    box-sizing: border-box; /* Ensure padding and border are included in the element's total width and height */
-  }
-  
-  .aura-layer {
-    position: absolute;
-    border-radius: 50%;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden; /* Prevent scrolling */
+  box-sizing: border-box; /* Ensure padding and border are included in the element's total width and height */
+}
+
+.aura-layer {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.6;
+  animation: breathe 4s ease-in-out infinite, color-change 10s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.layer1 {
+  width: 30vmin;
+  height: 30vmin;
+  animation-delay: 0s;
+}
+
+.layer2 {
+  width: 50vmin;
+  height: 50vmin;
+  animation-delay: 1s;
+}
+
+.layer3 {
+  width: 70vmin;
+  height: 70vmin;
+  animation-delay: 2s;
+}
+
+.layer4 {
+  width: 90vmin;
+  height: 90vmin;
+  animation-delay: 3s;
+}
+
+@keyframes breathe {
+  0%, 100% {
+    transform: scale(1);
     opacity: 0.6;
-    animation: breathe 4s ease-in-out infinite, color-change 10s ease-in-out infinite;
-    pointer-events: none;
   }
-  
-  .layer1 {
-    width: 30vmin;
-    height: 30vmin;
+  50% {
+    transform: scale(1.5);
+    opacity: 0.3;
+  }
+}
+
+@keyframes color-change {
+  0% {
     background: rgba(255, 0, 150, 0.2);
   }
-  
-  .layer2 {
-    width: 50vmin;
-    height: 50vmin;
+  33% {
     background: rgba(0, 150, 255, 0.2);
-    animation-delay: 1s;
   }
-  
-  .layer3 {
-    width: 70vmin;
-    height: 70vmin;
-    background: rgba(150, 255, 0, 0
-  css
-  Copy code
-  .2);
-    animation-delay: 2s;
+  66% {
+    background: rgba(150, 255, 0, 0.2);
   }
-  
-  .layer4 {
-    width: 90vmin;
-    height: 90vmin;
+  100% {
     background: rgba(255, 0, 150, 0.2);
-    animation-delay: 3s;
   }
-  
-  @keyframes breathe {
-    0%, 100% {
-      transform: scale(1);
-      opacity: 0.6;
-    }
-    50% {
-      transform: scale(1.5);
-      opacity: 0.3;
-    }
-  }
-  
-  @keyframes color-change {
-    0% {
-      background: rgba(255, 0, 150, 0.2);
-    }
-    33% {
-      background: rgba(0, 150, 255, 0.2);
-    }
-    66% {
-      background: rgba(150, 255, 0, 0.2);
-    }
-    100% {
-      background: rgba(255, 0, 150, 0.2);
-    }
-  }
-  
+}
+
+.border-solid {
+  border: 2px solid;
+}
+
+.border-diffusing {
+  border: 2px dashed;
+}
+
+.vibrant {
+  filter: brightness(1.2);
+}
+
+.smooth-texture {
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.1) 1%, transparent 1%);
+  background-size: 4px 4px;
+}
+
+.rough-texture {
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.3) 1%, transparent 1%);
+  background-size: 8px 8px;
+}
+
   
   
   
