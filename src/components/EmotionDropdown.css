@@ -1,0 +1,53 @@
+.emotion-dropdown {
+    margin-bottom: 10px;
+    padding: 12px 18px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    color: #333;
+    cursor: pointer;
+    font-size: 16px;
+    font-family: 'Arial', sans-serif;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%204%205'%3E%3Cpath%20fill='%23333'%20d='M2%200L0%202h4L2%200z'%20/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 10px 10px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.emotion-dropdown:hover {
+    border-color: #999;
+}
+
+.emotion-dropdown:focus {
+    outline: none;
+    border-color: #666;
+    box-shadow: 0 0 5px rgba(102, 102, 102, 0.5);
+}
+
+option {
+    color: #333;
+    background-color: #fff;
+    font-family: 'Arial', sans-serif;
+}
+
+.emotion-dropdown-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.emotion-dropdown-label {
+    margin-bottom: 5px;
+    font-size: 14px;
+    color: #333;
+    font-family: 'Arial', sans-serif;
+}
+
+
+
+  
+  

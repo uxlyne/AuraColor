@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Header from './components/Header';
 import Aura from './components/Aura';
 import TextField from './components/TextField';
+import ButtonList from './components/ButtonList';
 import Footer from './components/Footer';
 import ThemeToggle from './components/ThemeToggle';
 import './App.css';
@@ -9,10 +10,14 @@ import './App.css';
 const App = () => {
   const [color, setColor] = useState('');
   const [theme, setTheme] = useState('light');
+  const [words, setWords] = useState([]);
 
-  const handleTextChange = (text) => {
-    const newColor = convertTextToColor(text);
-    setColor(newColor);
+  const handleTextSubmit = (text) => {
+    setWords([...words, text]);
+  };
+
+  const handleRemoveWord = (word) => {
+    setWords(words.filter(w => w !== word));
   };
 
   const toggleTheme = () => {
@@ -26,7 +31,8 @@ const App = () => {
       <div className="main-content">
         <div className="text-field-container">
           <h2>Aura Color Entry</h2>
-          <TextField onTextChange={handleTextChange} />
+          <TextField onTextSubmit={handleTextSubmit} />
+          <ButtonList words={words} onRemove={handleRemoveWord} />
         </div>
         <Aura />
       </div>
@@ -35,12 +41,9 @@ const App = () => {
   );
 };
 
-const convertTextToColor = (text) => {
-  // Implement your text-to-color conversion logic here
-  return '#FFFFFF'; // Placeholder
-};
-
 export default App;
+
+
 
 
 

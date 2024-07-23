@@ -4,13 +4,14 @@
   top: 0;
   left: 0;
   height: 50px; /* Adjust height as needed */
-  background: rgba(255, 255, 255, 0.5); /* Lower opacity */
+  background-color: var(--background-color); /* Match the body's background color */
   box-sizing: border-box;
   z-index: 10; /* Ensure it stays above other elements */
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
 
 
 

@@ -1,12 +1,60 @@
-.text-field {
-    margin: 20px 0;
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    width: 80%;
-    max-width: 500px;
-    font-size: 16px;
+.text-field-container {
+    position: relative;
+    width: 100%;
   }
+  
+  .text-field-form {
+    display: flex;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .text-field-input {
+    background-color: var(--input-background-color);
+    color: var(--input-text-color);
+    border: 1px solid var(--input-text-color);
+    padding: 10px;
+    border-radius: 5px 0 0 5px;
+    width: calc(100% - 80px); /* Adjust width to make space for the button */
+    box-sizing: border-box;
+  }
+  
+  .text-field-submit {
+    padding: 10px;
+    border: 1px solid var(--input-text-color);
+    border-radius: 0 5px 5px 0;
+    background-color: var(--input-background-color);
+    color: var(--input-text-color);
+    cursor: pointer;
+    height: 42px; /* Match the input field height */
+  }
+  
+  .suggestions-list {
+    list-style: none;
+    margin: 5px 0 0 0;
+    padding: 0;
+    width: 100%;
+    border: 1px solid var(--input-text-color);
+    border-radius: 5px;
+    background-color: var(--input-background-color);
+    max-height: 150px;
+    overflow-y: auto;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .suggestions-list li {
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+  }
+  
+  .suggestions-list li:hover {
+    background-color: var(--input-text-color);
+    color: var(--input-background-color);
+    border-radius: 5px;
+  }
+  
+  
   
   
   

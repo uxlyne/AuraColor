@@ -1,0 +1,19 @@
+.word-button {
+    display: inline-flex;
+    align-items: center;
+    padding: 5px 10px;
+    margin: 5px;
+    border: 1px solid var(--input-text-color);
+    border-radius: 5px;
+    background-color: var(--input-background-color);
+    color: var(--input-text-color);
+  }
+  
+  .remove-button {
+    margin-left: 10px;
+    border: none;
+    background: none;
+    color: var(--input-text-color);
+    cursor: pointer;
+  }
+  

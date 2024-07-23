@@ -33,11 +33,25 @@ code {
 .light {
   --background-color: white;
   --text-color: black;
+  --input-background-color: #f0f0f0;
+  --input-text-color: #000;
 }
 
 .dark {
-  --background-color: black;
-  --text-color: white;
+  --background-color: #1c1c1c; /* Softer dark gray */
+  --text-color: #e0e0e0; /* Light gray text */
+  --input-background-color: #333; /* Darker background for input in dark mode */
+  --input-text-color: #e0e0e0; /* Light text for input in dark mode */
+}
+
+.top-bar {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px;
+  box-sizing: border-box;
+  margin-top: 50px; /* Adjust to avoid overlapping with header */
+  background-color: var(--background-color); /* Match the body's background color */
 }
 
 .main-content {
@@ -52,7 +66,7 @@ code {
 
 .text-field-container {
   text-align: center;
-  flex: 1;
+  flex: 0.3; /* Adjust the flex to make the text field container smaller */
   margin-right: 20px;
 }
 
@@ -61,11 +75,17 @@ code {
 }
 
 .text-field {
-  margin-top: 10px;
+  background-color: var(--input-background-color);
+  color: var(--input-text-color);
+  border: 1px solid var(--input-text-color);
+  padding: 10px;
+  border-radius: 5px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .aura-container {
-  flex: 1;
+  flex: 0.7; /* Adjust the flex to make the aura container larger */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -75,6 +95,11 @@ code {
   overflow: hidden; /* Prevent scrolling */
   box-sizing: border-box; /* Ensure padding and border are included in the element's total width and height */
 }
+
+
+
+
+
 
 
 
