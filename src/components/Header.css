@@ -1,0 +1,16 @@
+.header {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 50px; /* Adjust height as needed */
+  background: rgba(255, 255, 255, 0.5); /* Lower opacity */
+  box-sizing: border-box;
+  z-index: 10; /* Ensure it stays above other elements */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
