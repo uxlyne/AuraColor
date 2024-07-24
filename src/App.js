@@ -94,10 +94,12 @@ const App = () => {
       <Header />
       <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
       <div className="main-content">
-        <div className="text-field-container">
-          <h2>Choose Your Emotional Palette</h2>
-          <TextField onTextSubmit={handleTextSubmit} />
-          <ButtonList words={words} onRemove={handleRemoveWord} />
+        <div className="interaction-container">
+          <div className="text-field-container">
+            <h2>Choose Your Emotional Palette</h2>
+            <TextField onTextSubmit={handleTextSubmit} />
+            <ButtonList words={words} onRemove={handleRemoveWord} />
+          </div>
         </div>
         <Aura layers={layers} />
       </div>

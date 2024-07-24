@@ -1,19 +1,48 @@
+/* WordButton.css */
+
 .word-button {
-    display: inline-flex;
-    align-items: center;
-    padding: 5px 10px;
-    margin: 5px;
-    border: 1px solid var(--input-text-color);
-    border-radius: 5px;
-    background-color: var(--input-background-color);
-    color: var(--input-text-color);
-  }
-  
-  .remove-button {
-    margin-left: 10px;
-    border: none;
-    background: none;
-    color: var(--input-text-color);
-    cursor: pointer;
-  }
-  
+  display: flex;
+  align-items: center;
+  background-color: var(--button-background-color);
+  color: var(--button-text-color);
+  border: 1px solid var(--button-border-color);
+  padding: 10px;
+  border-radius: 25px;
+  margin: 5px 0;
+  width: 100%;
+  max-width: 300px;
+  justify-content: space-between;
+  box-sizing: border-box;
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+.color-orb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.word-text {
+  flex-grow: 1;
+  font-size: 14px;
+  font-family: 'Arial', sans-serif;
+}
+
+.remove-button {
+  background: none;
+  border: none;
+  color: var(--button-text-color);
+  cursor: pointer;
+  font-size: 14px;
+  transition: color 0.3s;
+}
+
+.remove-button:hover {
+  color: var(--button-hover-text-color);
+}
+
+
+
+
+
