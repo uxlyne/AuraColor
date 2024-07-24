@@ -95,7 +95,7 @@ const App = () => {
       <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
       <div className="main-content">
         <div className="text-field-container">
-          <h2>Aura Color Entry</h2>
+          <h2>Choose Your Emotional Palette</h2>
           <TextField onTextSubmit={handleTextSubmit} />
           <ButtonList words={words} onRemove={handleRemoveWord} />
         </div>

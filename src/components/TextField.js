@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './TextField.css';
 
 const TextField = ({ onTextSubmit }) => {
   const [inputValue, setInputValue] = useState('');
@@ -10,19 +11,24 @@ const TextField = ({ onTextSubmit }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        placeholder="Type here..."
-        value={inputValue}
-        onChange={(e) => setInputValue(e.target.value)}
-      />
-      <button type="submit">Enter</button>
-    </form>
+    <div className="text-field-container">
+      <form className="text-field-form" onSubmit={handleSubmit}>
+        <input
+          type="text"
+          className="text-field-input"
+          placeholder="Type here..."
+          value={inputValue}
+          onChange={(e) => setInputValue(e.target.value)}
+        />
+      </form>
+    </div>
   );
 };
 
 export default TextField;
+
+
+
 
 
 
