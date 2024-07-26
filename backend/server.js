@@ -1,4 +1,4 @@
-require('dotenv').config(); // Ensure .env is being loaded correctly
+require('dotenv').config({ path: '../.env' }); // Ensure .env is being loaded correctly from the root directory
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
@@ -13,10 +13,13 @@ app.use(cors({
   allowedHeaders: ['Content-Type', 'Authorization'] // Allow the necessary headers
 }));
 
-const mongoURI = process.env.MONGO_URI; // Use MONGO_URI from .env
-const PORT = process.env.PORT || 5000;
+console.log('MONGO_URI:', process.env.MONGO_URI); // Debugging statement
+console.log('PORT:', process.env.PORT); // Debugging statement
 
-mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
+const mongoURI = process.env.MONGO_URI; // Use MONGO_URI from .env
+const PORT = process.env.PORT || 5001;
+
+mongoose.connect(mongoURI)
   .then(() => console.log('MongoDB connected successfully'))
   .catch(err => console.error('MongoDB connection error:', err));
 
@@ -31,6 +34,9 @@ app.use((err, req, res, next) => {
 app.listen(PORT, () => {
   console.log(`Server started on port ${PORT}`);
 });
+
+
+
 
 
 
