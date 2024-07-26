@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from './components/Header';
 import Aura from './components/Aura';
 import TextField from './components/TextField';
@@ -8,10 +8,9 @@ import ThemeToggle from './components/ThemeToggle';
 import './App.css';
 
 const App = () => {
-  const [color, setColor] = useState('');
   const [theme, setTheme] = useState('light');
   const [words, setWords] = useState([]);
-
+  const [emotions, setEmotions] = useState([]);
   const [layers, setLayers] = useState({
     layer1: {
       fillColor: 'rgba(255, 0, 150, 0.2)',
@@ -43,28 +42,22 @@ const App = () => {
     },
   });
 
-  const emotions = {
-    Happy: {
-      fillColor: 'rgba(255, 255, 0, 0.2)',
-      rimBorderColor: 'rgba(255, 255, 0, 0.5)',
-      borderType: 'solid',
-      vibrancy: 9,
-      texture: 'smooth',
-      layerNumber: 2,
-    },
-    Loving: {
-      fillColor: 'rgba(255, 105, 180, 0.2)',
-      rimBorderColor: 'rgba(255, 105, 180, 0.5)',
-      borderType: 'solid',
-      vibrancy: 8,
-      texture: 'smooth',
-      layerNumber: 4,
-    },
-    // Add more emotions as needed
-  };
+  useEffect(() => {
+    fetch('http://localhost:5001/api/emotions') // Ensure this URL is correct
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then(data => setEmotions(data))
+      .catch(error => {
+        console.error('Error fetching emotions:', error);
+      });
+  }, []);
 
   const handleTextSubmit = (text) => {
-    const emotion = emotions[text];
+    const emotion = emotions.find(e => e.name === text);
     if (emotion) {
       updateLayer(emotion);
       setWords([...words, text]);
@@ -109,6 +102,10 @@ const App = () => {
 };
 
 export default App;
+
+
+
+
 
 
 

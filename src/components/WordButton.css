@@ -3,14 +3,14 @@
 .word-button {
   display: flex;
   align-items: center;
-  background-color: var(--button-background-color);
-  color: var(--button-text-color);
-  border: 1px solid var(--button-border-color);
-  padding: 10px;
-  border-radius: 25px;
+  background-color: var(--button-background-color, #f0f0f0); /* Subtle background color */
+  color: var(--button-text-color, #333); /* Subtle text color */
+  border: 1px solid var(--button-border-color, #ccc); /* Subtle border color */
+  padding: 12px 15px; /* Same padding as input */
+  border-radius: 25px; /* Same border radius as input */
   margin: 5px 0;
   width: 100%;
-  max-width: 300px;
+  max-width: 500px; /* Same max width as input */
   justify-content: space-between;
   box-sizing: border-box;
   transition: background-color 0.3s, color 0.3s, border-color 0.3s;
@@ -25,22 +25,23 @@
 
 .word-text {
   flex-grow: 1;
-  font-size: 14px;
+  font-size: 16px; /* Same font size as input */
   font-family: 'Arial', sans-serif;
 }
 
 .remove-button {
   background: none;
   border: none;
-  color: var(--button-text-color);
+  color: var(--button-text-color, #333); /* Subtle text color */
   cursor: pointer;
-  font-size: 14px;
+  font-size: 16px; /* Same font size as input */
   transition: color 0.3s;
 }
 
 .remove-button:hover {
-  color: var(--button-hover-text-color);
+  color: var(--button-hover-text-color, #555); /* Subtle hover color */
 }
+
 
 
 
