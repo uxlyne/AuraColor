@@ -1,28 +1,28 @@
-// routes/emotionRoutes.js
 const express = require('express');
-const router = express.Router();
 const Emotion = require('../models/emotion');
 
-router.get('/emotions', async (req, res) => {
-  try {
-    const emotions = await Emotion.find();
-    res.json(emotions);
-  } catch (err) {
-    res.status(500).json({ message: err.message });
-  }
-});
+const router = express.Router();
 
-router.post('/emotions', async (req, res) => {
+router.post('/', async (req, res, next) => {
   const emotion = new Emotion(req.body);
   try {
     await emotion.save();
     res.status(201).send(emotion);
   } catch (error) {
-    res.status(400).json({ message: error.message });
+    next(error);
   }
 });
 
-router.get('/emotions/:name', async (req, res) => {
+router.get('/', async (req, res, next) => {
+  try {
+    const emotions = await Emotion.find();
+    res.send(emotions);
+  } catch (error) {
+    next(error);
+  }
+});
+
+router.get('/:name', async (req, res, next) => {
   try {
     const emotion = await Emotion.findOne({ name: req.params.name });
     if (!emotion) {
@@ -30,11 +30,11 @@ router.get('/emotions/:name', async (req, res) => {
     }
     res.send(emotion);
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    next(error);
   }
 });
 
-router.put('/emotions/:name', async (req, res) => {
+router.put('/:name', async (req, res, next) => {
   try {
     const emotion = await Emotion.findOneAndUpdate({ name: req.params.name }, req.body, { new: true, runValidators: true });
     if (!emotion) {
@@ -42,11 +42,11 @@ router.put('/emotions/:name', async (req, res) => {
     }
     res.send(emotion);
   } catch (error) {
-    res.status(400).json({ message: error.message });
+    next(error);
   }
 });
 
-router.delete('/emotions/:name', async (req, res) => {
+router.delete('/:name', async (req, res, next) => {
   try {
     const emotion = await Emotion.findOneAndDelete({ name: req.params.name });
     if (!emotion) {
@@ -54,9 +54,10 @@ router.delete('/emotions/:name', async (req, res) => {
     }
     res.send({ message: 'Emotion deleted' });
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    next(error);
   }
 });
 
 module.exports = router;
+
 

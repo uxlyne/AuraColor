@@ -43,14 +43,17 @@ const App = () => {
   });
 
   useEffect(() => {
-    fetch('http://localhost:5001/api/emotions') // Ensure this URL is correct
+    fetch('http://localhost:5001/api/emotions')
       .then(response => {
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
         return response.json();
       })
-      .then(data => setEmotions(data))
+      .then(data => {
+        console.log('Fetched emotions:', data); // Debug statement
+        setEmotions(data);
+      })
       .catch(error => {
         console.error('Error fetching emotions:', error);
       });
@@ -102,6 +105,12 @@ const App = () => {
 };
 
 export default App;
+
+
+
+
+
+
 
 
 

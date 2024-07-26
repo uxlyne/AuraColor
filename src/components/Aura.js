@@ -8,6 +8,7 @@ const applyAttributes = (attributes) => {
     borderColor: attributes.rimBorderColor,
     borderStyle: attributes.borderType,
     filter: attributes.vibrancy > 7 ? 'brightness(1.2)' : 'none',
+    opacity: 1 // Ensure high opacity for visibility
   };
 
   let classNames = 'aura-layer';
